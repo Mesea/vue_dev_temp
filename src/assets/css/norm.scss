@@ -1,0 +1,39 @@
+$mainColor:#2bc2f4;
+
+// 灰色
+$huiQ:#f6f6f6;
+$huiS:#999;
+$blue:#2BC2F4;
+//垂直阴影
+
+//常用字号
+$s11:22;
+$s13:26;
+$s14:28;
+$s16:32;
+
+
+.s8{font-size:r(16);}
+.s10{font-size:r(20);}
+.s11{font-size:r(22);}
+.s12{font-size:r(24);}
+.s13{font-size:r(26);}
+.s14{font-size:r(28);}
+.s15{font-size:r(30);}
+.s16{font-size:r(32);}
+.s18{font-size:r(36);}
+.s20{font-size:r(40);}
+.s22{font-size:r(44);}
+.s24{font-size:r(48);}
+.s36{font-size:r(72);}
+.mT05{margin-top:r(10);}
+.mT1{margin-top:r(20);}
+.mT2{margin-top:r(40);}
+
+#intr b{
+  font-weight: bold;
+}
+/*mint_ui m*/
+.mint-msgbox-cancel,.mint-msgbox-confirm{
+  font-size: r(32);
+}

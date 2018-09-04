@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+
+// 背景图片地址和大小
+@mixin bis($url) {
+	background-image: url("../../assets/images/"+$url);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+@mixin backgroundImg($url,$left,$top) {
+	background-image: url("../../assets/images/"+$url);
+	background-position: $left $top;
+	background-repeat: no-repeat;
+	background-size:100% auto;
+}
+
+
+@mixin borderRadius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+//定位全屏
+@mixin allcover{
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+}
+
+//定位上下左右居中
+@mixin center {
+	position: absolute;
+	top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//定位上下居中
+@mixin ct {
+	position: absolute;
+	top: 50%;
+    transform: translateY(-50%);
+}
+
+//定位上下居中
+@mixin cl {
+	position: absolute;
+	left: 50%;
+    transform: translateX(-50%);
+}
+//居中
+
+@mixin vc {
+	display: inline-block;
+	vertical-align:middle;
+}
+
+//宽高
+@mixin wh($width, $height){
+	width: $width/$fontSize+rem;
+	height: $height/$fontSize+rem;
+}
+
+//字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'Microsoft YaHei') {
+	font: #{$size}/#{$line-height} $family;
+}
+
+//字体大小，颜色
+@mixin sc($size, $color){
+	font-size: $size;
+	color: $color;
+}
+
+//flex 布局和 子元素 对其方式
+@mixin fj($type: space-between){
+	display: flex;
+	justify-content: $type;
+}
+//flex 布局和 子元素 对其方式
+@mixin fjt{
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+}
+// 字体响应式宏命令
+//淘宝字体响应式基准字体为75
+$fontSize:75;
+
+@function r($px){
+	@return $px/$fontSize+rem;
+}
+
+
+// 例
+/*
+div{
+	width:r(200);
+}
+*/
+
+// 四值计算
+@mixin setRem($name,$val...){
+	// ...固定写法,向后若干个值
+	$max:length($val);//4
+	$str:"";
+	// 从1开始到$max(4)
+	@for $i from 1 through $max{
+		$value:nth($val,$i)/$fontSize;//2.17391
+		$str:$str+$value+rem; //4.34783rem
+
+		@if $i<$max{
+			$str:#{$str+" "};//4.34783rem空格4.34783rem空格
+		}
+	}
+	#{$name}:$str;
+}
+
+
+@mixin varticSdow($val,$x,$y,$n){
+	box-shadow: $x+px $y+px $n+px $val;
+}

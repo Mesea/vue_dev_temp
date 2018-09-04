@@ -1,0 +1,5 @@
+// state
+
+export default{
+	extra:{}
+}

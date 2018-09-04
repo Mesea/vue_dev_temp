@@ -1,0 +1,116 @@
+#app {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #555555;
+  overflow-x: hidden;
+  line-height: 160%;
+}
+.allScr{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+dl{margin-bottom: 0;}
+dt{font-weight: normal;}
+input{border: 0;outline: 0;}
+.l{float:left;}
+.r{float:right;}
+.tr{text-align: right;}
+.tc{text-align: center;}
+.lv{color: #7CF9FB !important;}
+.vc{display: inline-block;vertical-align: middle;}
+.flex {
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.flex_none{
+  -webkit-flex: none;
+  -webkit-box-flex: 0;
+  -ms-flex: none;
+  flex: none;
+}
+.justify-start {
+  -webkit-justify-content: flex-start;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+.justify-between {
+  -webkit-justify-content: space-between;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.justify-center{
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  -ms-flex-align:center;
+  align-items:center;}
+
+.culture{
+  background-color:#2BC2F4;
+  @include setRem("padding",40,20,80,20);
+  @include allcover;
+  overflow: auto;
+  color: #fff;
+}
+.culture.padding0{padding-right:0;}
+
+
+
+.around{
+  animation: aroundAnimation 0.3s infinite;
+  -moz-animation: aroundAnimation 0.3s infinite;	/* Firefox */
+  -webkit-animation: aroundAnimation 0.3s infinite;	/* Safari 和 Chrome */
+}
+
+.scale{
+  animation: scaleAnimation 1s;
+  -moz-animation: scaleAnimation 1s;	/* Firefox */
+  -webkit-animation: scaleAnimation 1s;	/* Safari 和 Chrome */
+}
+
+@keyframes scaleAnimation{
+  0%{
+    transform:scale(0.3);
+  }
+  100%{
+    transform:scale(1);
+  }
+}
+
+@keyframes aroundAnimation{
+  0%,
+  100%{
+  transition-timing-function: cubic-bezier(0.215,.61,.355,1);
+  transform: translateX(0) rotate(0deg);
+  }
+  45%{
+  transition-timing-function: cubic-bezier(0.755,0.050,0.855,0.060);
+  transform: translateX(-10px) rotate(-30deg);
+  }
+  90%{
+  transform: translateX(10px) rotate(30deg);
+  }
+}
+
+/*禁止长按默认粘贴*/
+
+  *{
+  -webkit-touch-callout:none;  /*系统默认菜单被禁用*/
+  -webkit-user-select:none; /*webkit浏览器*/
+  -khtml-user-select:none; /*早期浏览器*/
+  -moz-user-select:none; /*火狐*/
+  -ms-user-select:none;  /*IE10*/
+  user-select:none;
+}
+/*解决导致 导致input输入框不可用，*/
+input{
+  -webkit-user-select: auto;
+}
+/*禁止长按默认粘贴结束*/
