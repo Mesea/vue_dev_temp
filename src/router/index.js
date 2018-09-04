@@ -10,7 +10,7 @@ const constantRouterMap = [
 {
     path: '/culture',
     name: 'culture',
-    component: resolve => require(['@/components/home'], resolve),
+    component: resolve => require(['@/views/home'], resolve),
     meta: {
       title: '传统文化传承人'
     },
@@ -18,7 +18,7 @@ const constantRouterMap = [
       {
         path: 'index',
         component: () =>
-          import ('@/components/culture/index'),
+          import ('@/views/culture/index'),
         meta: {
           title: 'yeyeye'
         },
@@ -26,7 +26,7 @@ const constantRouterMap = [
       {
         path: 'list',
         component: () =>
-          import ('@/components/culture/list'),
+          import ('@/views/culture/list'),
         meta: {
           title: 'hahaha'
         },
@@ -37,7 +37,7 @@ const constantRouterMap = [
   {
     path: '/testpath',
     name: 'testpath',
-    component: resolve => require(['@/components/home'], resolve),
+    component: resolve => require(['@/views/home'], resolve),
     meta: {
       title: '测试路由'
     },
@@ -45,7 +45,7 @@ const constantRouterMap = [
       {
         path: 'index',
         component: () =>
-          import ('@/components/testpath/index'),
+          import ('@/views/testpath/index'),
         meta: {
           title: '测试index'
         },
@@ -53,7 +53,7 @@ const constantRouterMap = [
       {
         path: 'list',
         component: () =>
-          import ('@/components/testpath/list'),
+          import ('@/views/testpath/list'),
         meta: {
           title: '测试list'
         },

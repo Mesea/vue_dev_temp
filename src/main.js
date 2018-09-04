@@ -6,9 +6,7 @@ import router from './router'
 import '@/assets/js/flexible'
 // body样式通用引入失效
 import "./assets/css/reset.scss"
-// MintUI  import
-import {Button} from 'mint-ui'
-Vue.component(Button.name, Button)
+
 
 // 注册全局请求
 import VueWechatTitle from 'vue-wechat-title'//动态获取title
@@ -16,29 +14,34 @@ Vue.use(VueWechatTitle)
 import api from './core/api/api'
 Vue.use(api)
 //注册全局通用属性,方法
-import global from './core/global/global'
-
+import global from '@/core/global/global'
 Vue.use(global)
 
-// import directive from './core/directive/directive'
-// Vue.use(directive)
-
-import native from './core/native/native'
+import native from '@/core/native/native'
 Vue.use(native)
 
+import directive from '@/core/directive/directive'
+Vue.use(directive)
+
+import components from '@/core/components/components'
+Vue.use(components)
 
 
 Vue.config.productionTip = false
-
-
 import store from "@/core/store/index"
 // import {mapState,mapMutations,mapGetters,mapActions} from "vuex"
 /* eslint-disable no-new */
-new Vue({
+
+
+
+
+ new Vue({
   el: '#app',
   router,
   store,
   components: { App },
   template: '<App/>'
 })
+
+
 
