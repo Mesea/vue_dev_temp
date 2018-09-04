@@ -4,11 +4,9 @@ import Router from 'vue-router'
 import { Toast, Indicator, MessageBox } from 'mint-ui'
 import nativeBack from "@/core/native/native"
 
-// console.dir(Vue)
 
-// 创建axios实例
-
-const proxy = location.host.indexOf(".com") != -1 ? "" : "/apis";
+// 根据公司业务走
+const proxy = location.host.indexOf(".com||.net") != -1 ? "" : "/apis";
 
 const service = axios.create({
   baseURL: location.origin + proxy,

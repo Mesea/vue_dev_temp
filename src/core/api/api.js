@@ -2,11 +2,7 @@ import Vue from 'vue'
 import request from "./config/http.js"
 import params from "./config/params.js"
 
-
-
-
 const url1 = '/mobile/api/tradition';
-
 
 const apis = {
   test() {

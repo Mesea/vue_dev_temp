@@ -4,10 +4,7 @@
 
 const path = require('path')
 
-// const URL = 'http://tmp.mexue.com/';
-const URL = 'http://tmp.mexue.com';
-
-
+// const URL = 'http://主机';
 
 module.exports = {
   dev: {
@@ -16,7 +13,6 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/apis': {
-         //将www.exaple.com印射为/apis,注意格式斜杠
         target:URL , // 接口域名
         secure: false, // 如果是https接口，需要配置这个参数
         changeOrigin: true, //是否跨域
