@@ -3,12 +3,8 @@ import Vue from 'vue'
 
 
 var global = {
-  // test:judgeAppVersion('3.5.4', nval)
-  getParam,
-}
-
 // 版本判断方法
-function judgeAppVersion(sval, nval) {
+  udgeAppVersion(sval, nval) {
   if (!nval) return;
   var s = sval.split(".");
   var n = nval.split(".");
@@ -35,10 +31,9 @@ function judgeAppVersion(sval, nval) {
       }
     }
   }
-}
-
+},
 // 获取url参数返回json
-function getParam() {
+getParam() {
   var search = {};
   try {
     location.search
@@ -53,6 +48,11 @@ function getParam() {
     throw new Error(JSON.stringify(search));
   }
   return search;
+},
+  isAndroid() { //判断是否是安卓
+    var agent = navigator.userAgent;
+    return agent.indexOf('Android') > -1 || agent.indexOf('Adr') > -1;
+  }
 }
 
 

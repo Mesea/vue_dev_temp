@@ -4,7 +4,7 @@
 
 const path = require('path')
 
-// const URL = 'http://主机';
+const URL = 'http://www.baidu.com';
 
 module.exports = {
   dev: {
