@@ -5,7 +5,7 @@ import { Toast, Indicator, MessageBox } from 'mint-ui'
 import nativeBack from "@/core/native/native"
 
 
-// 根据公司业务走
+
 const proxy = (location.host.indexOf(".com")!=-1||location.host.indexOf(".net")!=-1)? "" : "/apis";
 
 const service = axios.create({
