@@ -6,7 +6,7 @@ export default (Vue) => {
             	alert("OK1");
             };
         }
-    }),
+    })
    Vue.directive("test2",{
         inserted:function(el){
             el.onclick=function(){
