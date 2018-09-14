@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import params from "@/core/api/config/params"
 
 
 
@@ -33,22 +34,7 @@ var global = {
   }
 },
 // 获取url参数返回json
-getParam() {
-  var search = {};
-  try {
-    location.search
-      .substr(1)
-      .split('&')
-      .forEach(function(item) {
-        var s = item.split('=');
-        search[s[0]] = s[1];
-      });
-  } catch (e) {
-    // 抛出异常
-    throw new Error(JSON.stringify(search));
-  }
-  return search;
-},
+  params,
   isAndroid() { //判断是否是安卓
     var agent = navigator.userAgent;
     return agent.indexOf('Android') > -1 || agent.indexOf('Adr') > -1;
