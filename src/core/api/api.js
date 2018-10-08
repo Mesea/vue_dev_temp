@@ -1,32 +1,31 @@
 import Vue from 'vue'
 import request from "./config/http.js"
 import params from "./config/params.js"
-
-const url1 = '/mobile/api/tradition';
-
+const url1 = '/mobile/api/yp';
 const apis = {
-  test() {
+  logon(data) {
+    console.log(data);
     return request({
       url: url1,
       method: 'post',
       data: {
-        m: 'getDynastyWall',
-        studentId: params.studentId,
-        token: params.token,
-        activityId: params.activityId,
-        classId: params.classId
+        m: 'login',
+        mobile:data.mobile,
+        password:data.password
       }
     })
   },
-  testFGet() {
+  logons(data) {
     return request({
-      url: "/yp/information/rest/getHisInfo",
+      url: url1,
       method: 'get',
       params: {
-        schoolId: '557d952a0cf2f3668d0b7220'
+        m: 'login',
+        mobile:data.mobile,
+        password:data.password
       }
     })
-  }
+  },
 }
 
 

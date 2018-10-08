@@ -4,7 +4,7 @@
 
 const path = require('path')
 
-const URL = 'http://www.baidu.com';
+const URL = 'http://test.inside.mexue.com';
 
 module.exports = {
   dev: {

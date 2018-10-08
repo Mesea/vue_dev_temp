@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "lodash": "^4.17.11",
     "mint-ui": "^2.2.13",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.1",

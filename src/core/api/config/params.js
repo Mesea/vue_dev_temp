@@ -1,10 +1,8 @@
 import global from '@/core/global/global.js'
 var param = global.global.getParam();
+
+// 获取url参数,在此配置
 const params = {
-  studentId: param.childId || "",
-  token: param.token || "test", 
-  activityId: param.activityId || "",
-  schoolId: param.schoolId || "",
-  classId: param.classId || ""
+  token: param.token || "test"
 }
 export default params;

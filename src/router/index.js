@@ -1,71 +1,39 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import global from '@/core/global/global.js'
-const param = global.global.getParam();
-
-
+// import global from '@/core/global/global.js'
+// const param = global.global.getParam();
 Vue.use(Router)
-
-const constantRouterMap = [
+const routes = [
 {
     path: '/culture',
-    name: 'culture',
-    component: resolve => require(['@/views/home'], resolve),
+    component: resolve => require(['@/components/home'], resolve),
     meta: {
-      title: '传统文化传承人'
+      title: '传统文化传承人',
     },
     children: [
       {
         path: 'index',
         component: () =>
-          import ('@/views/culture/index'),
+          import ('@/components/culture/index'),
         meta: {
-          title: 'yeyeye'
+          title: '我是首页',
         },
       },
       {
         path: 'list',
         component: () =>
-          import ('@/views/culture/list'),
+          import ('@/components/culture/list'),
         meta: {
-          title: 'hahaha'
+          title: '我是列表页'
         },
       }
     ]
-  },
-
-  {
-    path: '/testpath',
-    name: 'testpath',
-    component: resolve => require(['@/views/home'], resolve),
-    meta: {
-      title: '测试路由'
-    },
-    children: [
-      {
-        path: 'index',
-        component: () =>
-          import ('@/views/testpath/index'),
-        meta: {
-          title: '测试index'
-        },
-      },
-      {
-        path: 'list',
-        component: () =>
-          import ('@/views/testpath/list'),
-        meta: {
-          title: '测试list'
-        },
-      }
-    ]
-  },
-
+  }
 ];
 
 
 const router = new Router({
-  routes: constantRouterMap
+  routes,
 })
 
 
