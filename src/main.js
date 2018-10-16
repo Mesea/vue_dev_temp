@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import _ from 'lodash'
 import '@/assets/js/flexible'
 // body样式通用引入失效
 import "./assets/css/reset.scss"

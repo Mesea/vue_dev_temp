@@ -4,7 +4,7 @@
 
 const path = require('path')
 
-const URL = 'http://test.inside.mexue.com';
+const URL = 'http://192.168.2.117:8005';
 
 module.exports = {
   dev: {

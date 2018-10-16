@@ -1,18 +1,16 @@
 import Vue from 'vue'
 import request from "./config/http.js"
 import params from "./config/params.js"
-const url1 = '/mobile/api/yp';
+const url1 = '/activityfilm/art/activity/test';
+
+
 const apis = {
   logon(data) {
-    console.log(data);
     return request({
       url: url1,
       method: 'post',
-      data: {
-        m: 'login',
-        mobile:data.mobile,
-        password:data.password
-      }
+      jsonString:true,
+      data
     })
   },
   logons(data) {
