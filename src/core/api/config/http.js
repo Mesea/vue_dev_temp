@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import axios from 'axios';
+import store from '@/core/store/index';
+import { Toast,Indicator, MessageBox } from 'mint-ui'
 // 配置代理
 const baseURL = (location.host.indexOf(".com") != -1 || location.host.indexOf(".net") != -1) ? "" : "/apis";
-
 let ajaxconfig = {
   // 基础url前缀
   baseURL,
-
   //设置超时时间
   timeout: 300000,
   //返回数据类型
@@ -36,7 +36,6 @@ let ajaxconfig = {
   // 请求头信息
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded', //application/json application/x-www-form-urlencoded
-    'Token': ''
   },
 
   //parameter参数
@@ -50,26 +49,12 @@ let ajaxconfig = {
 
 let instance = axios.create(ajaxconfig);
 
+
+
 //请求列表数据
 
-/* 
-   axios 请求方式
-   
-   axios.request(config)
-
-   axios.get(url[, config])
-
-   axios.delete(url[, config])
-
-   axios.head(url[, config])
-
-   axios.post(url[, data[, config]])
-
-   axios.put(url[, data[, config]])
-
-   axios.patch(url[, data[, config]])
- */
-function queryData(options) {
+function queryData(options,callBack) {
+  // this
   //必须基本设置请求参数
   let url = options.url || '';
   let method = options.method || ajaxconfig.method; //"get" "post"  "put" ，默认请求get
@@ -86,16 +71,18 @@ function queryData(options) {
 
     //POST提交数据时必选参数
     let potsData = options.data || {}; //{firstName: 'Fred',lastName: 'FlintStone'}
+
+
     if (_.isObject(potsData)) {
       if (typeof isParseStringJSON != 'undefined') {
         setAjaxQuestHeader('Content-Type', 'application/json');
         potsData = JSON.stringify(potsData);
-        console.log(potsData);
       } else {
         setAjaxQuestHeader('Content-Type', 'application/x-www-form-urlencoded');
         potsData = serializeParams(potsData);
       }
     }
+    callBack(instance);
     return instance[method].bind(instance, url, potsData, config);
   } else {
     //GET提交数据时必选参数
@@ -107,6 +94,7 @@ function queryData(options) {
     // if(method=="delete"){
     //   instance.defaults.headers.post['Content-Type'] = 'multipart/form-data';
     // }
+    callBack(instance);
     return instance[method].bind(instance, url, config);
   }
 }
@@ -150,9 +138,70 @@ function setAjaxQuestHeader(key, v) {
   instance = axios.create(ajaxconfig);
 }
 
+
 let ajax = function(option) {
-  return queryData(option)();
+  // console.dir(queryData(option));
+  return queryData(option,function(instance){
+
+    // setAjaxQuestHeader('deviceId', navigator.userAgent);
+    // setAjaxQuestHeader('platform','h5');
+    // setAjaxQuestHeader('version', '1.0');
+    // setAjaxQuestHeader('clientType', 'Parent');
+    // 拦截器
+        //请求响应
+        instance.interceptors.request.use(
+         config => {
+          Indicator.open();
+          config.headers.deviceId=navigator.userAgent;
+          config.headers.platform="h5";
+          config.headers.version="1.0";
+          config.headers.clientType=store.state.extra.sign.clientType;
+          return config
+         },
+         error => {
+            console.log(error);
+         })
+        //响应拦截器
+        instance.interceptors.response.use(config=> {
+        Indicator.close();
+        // console.log(config);
+        return config;
+        },error => {
+          console.log(error);
+          Indicator.close();
+          if (!error.config.response) {
+            let instance = Toast('网络异常');
+            setTimeout(() => {
+              instance.close();
+            }, 2000);
+          }
+
+        });
+
+
+  })();
 };
+
+// instance = axios.create(ajaxconfig);
+// instance.interceptors.request.use(
+//  config => {
+//         console.log("OK");
+//   return config
+//  },
+//  error => {
+//   console.log("OK");
+//  }
+// )
+
+// axios.interceptors.request.use(
+//     config => {
+//       console.log("OK");
+//       return config;
+//     },
+//     err => {
+//       console.log(err);
+// });
+
 
 /*
  例:
@@ -170,7 +219,6 @@ let ajax = function(option) {
           // 请求失败
        })
  */
-
 
 
 export default ajax;
